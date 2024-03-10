@@ -9,10 +9,10 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const API_KEY = process.env.GOOGLE_API_KEY || 'AIzaSyDUpTSYs3skKmhZuK-YTYWVlk8Hq8g-cYI';
+const API_KEY = process.env.GOOGLE_API_KEY;
 const BASE_URL = 'https://www.googleapis.com/youtube/v3/';
 
-const genAI = new GoogleGenerativeAI("AIzaSyCrgBkTn2CUBRspdbeT0zP7fFjIXdeBUfY");
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 async function getQuestions(transcript) {
   const model = genAI.getGenerativeModel({ model: "gemini-pro"});
